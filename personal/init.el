@@ -38,7 +38,7 @@
             (define-key cider-mode-map (kbd "M-n") 'prelude-cleanup-buffer-or-region)  ;; C-c n
             (define-key cider-mode-map (kbd "M-]") 'cider-find-and-clear-repl-buffer)  ;; C-c M-o
 	    (define-key cider-mode-map (kbd "<C-return>") 'sindu-pprint-eval-defun-at-point)
-            (define-key cider-mode-map (kbd "<M-RET") 'sindu-eval-defun-at-point)))
+            (define-key cider-mode-map (kbd "<M-RET>") 'sindu-eval-defun-at-point)))
 
 
 ;;(add-hook 'cider-repl-clear-buffer-hook
@@ -113,9 +113,6 @@ by using nxml's indentation rules."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; iedit ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (prelude-require-package 'iedit)
-(require 'cider-eval-sexp-fu)
-
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; python ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;(prelude-require-package 'ein)
@@ -131,8 +128,8 @@ by using nxml's indentation rules."
 ;;               (ggtags-mode 1))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; cider-eval-sexp-fu ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (prelude-require-package 'cider-eval-sexp-fu)
+(require 'cider-eval-sexp-fu)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; neotree ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (prelude-require-package 'neotree)
