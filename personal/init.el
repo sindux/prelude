@@ -4,6 +4,8 @@
 ;;              '("pscp" "<host>.*" "<user>"))
 
 ;;;;;;;;;;;;;;;;;;;; cider ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ~/.lein/profiles.clj
+;; {:user {:plugins [[cider/cider-nrepl "0.10.0-SNAPSHOT"]]}}
 
 ;; move backward up 1 sexp recursively until we hit top or a comment block
 ;; then eval
@@ -140,6 +142,26 @@ by using nxml's indentation rules."
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; c++ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; company-clang
+(defun my-c++-mode-hook ()
+  (setq company-backends (delete 'company-semantic company-backends))  ;; use company-clang instead
+  ;;(setq gdb-many-windows t)
+  (setq gdb-show-main t))
+
+(add-hook 'c++-mode-hook 'my-c++-mode-hook)
+(add-hook 'c-mode-hook 'my-c++-mode-hook)
+
+;; g++ -E -x c++ - -v
+;; .dir-locals.el
+;; ((nil . ((company-clang-arguments . ("-Ic:/programdata/mingw/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++/"
+;;                                      "-Ic:/programdata/mingw/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++/x86_64-w64-mingw32/"
+;;                                      "-Ic:/programdata/mingw/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++/backward/"
+;;                                      "-Ic:/programdata/mingw/lib/gcc/x86_64-w64-mingw32/4.8.1/include/"
+;;                                      "-Ic:/programdata/mingw/lib/gcc/x86_64-w64-mingw32/4.8.1/include-fixed/"
+;;                                      "-Ic:/programdata/mingw/lib/gcc/x86_64-w64-mingw32/4.8.1/../../../../x86_64-w64-mingw32/include/"
+;;                                      )))))
+
+
 ;; irony-mode
 ;; (prelude-require-package 'irony)
 
