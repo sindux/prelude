@@ -144,8 +144,9 @@ by using nxml's indentation rules."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; c++ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; company-clang
 (defun my-c++-mode-hook ()
-  (setq company-backends (delete 'company-semantic company-backends))  ;; use company-clang instead
+  ;; (setq company-backends (delete 'company-semantic company-backends))  ;; use company-clang instead
   ;;(setq gdb-many-windows t)
+  (setq flycheck-clang-language-standard "c++11")
   (setq gdb-show-main t))
 
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
