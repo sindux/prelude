@@ -1,0 +1,4 @@
+# name: r
+# key: r
+# --
+(clojure.reflect/reflect $0)

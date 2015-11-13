@@ -5,7 +5,8 @@
 
 ;;;;;;;;;;;;;;;;;;;; cider ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ~/.lein/profiles.clj
-;; {:user {:plugins [[cider/cider-nrepl "0.10.0-SNAPSHOT"]]}}
+;; {:user {:plugins [[cider/cider-nrepl "0.10.0-SNAPSHOT"]
+;;                   [refactor-nrepl "2.0.0-SNAPSHOT"]]}}
 
 ;; move backward up 1 sexp recursively until we hit top or a comment block
 ;; then eval
@@ -42,20 +43,24 @@
 	    (define-key cider-mode-map (kbd "<C-return>") 'sindu-pprint-eval-defun-at-point)
             (define-key cider-mode-map (kbd "<M-RET>") 'sindu-eval-defun-at-point)))
 
+(add-hook 'cider-repl-mode-hook
+          (lambda ()
+            (define-key cider-repl-mode-map (kbd "M-]") 'cider-find-and-clear-repl-buffer)  ;; C-c M-o
+            ))
 
 ;;(add-hook 'cider-repl-clear-buffer-hook
 ;;          (lambda ()
 ;;            (goto-char (point-max))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; clj-refactor ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;(prelude-require-package 'clj-refactor)
+(prelude-require-package 'clj-refactor)
 
-;;(defun my-clojure-mode-hook ()
-;;  (clj-refactor-mode 1)
-;;  (yas-minor-mode 1) ; for adding require/use/import
-;;  (cljr-add-keybindings-with-prefix "C-c C-m"))
+(defun my-clojure-mode-hook ()
+ (clj-refactor-mode 1)
+ (yas-minor-mode 1) ; for adding require/use/import
+ (cljr-add-keybindings-with-prefix "C-c C-m"))
 
-;;(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
+(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
 
 ;;;;;;;;;;;;;;;;;;;; align-cljlet ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (prelude-require-package 'align-cljlet)

@@ -1,0 +1,5 @@
+# name: i
+# key: i
+# --
+(do (require 'inspector-jay.core)
+    (inspector-jay.core/inspect $0))
